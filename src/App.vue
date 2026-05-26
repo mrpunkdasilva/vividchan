@@ -30,6 +30,10 @@ const openPreview = (url: string) => {
 const handleCopyLink = () => {
   toastRef.value?.addToast('Link copied to clipboard!', 'success');
 };
+
+const handleUploadError = (message: string) => {
+  toastRef.value?.addToast(message, 'error');
+};
 </script>
 
 <template>
@@ -53,13 +57,13 @@ const handleCopyLink = () => {
             System_Status: Online
           </span>
           <span class="text-gray-600 text-[9px] font-mono uppercase tracking-widest">
-            Version 1.1.0_advanced
+            Version 1.2.0_optimized
           </span>
         </div>
       </header>
 
       <!-- Upload Section -->
-      <UploadSection @upload-success="handleUploadSuccess" />
+      <UploadSection @upload-success="handleUploadSuccess" @upload-error="handleUploadError" />
 
       <!-- Gallery Section -->
       <BackgroundGallery 

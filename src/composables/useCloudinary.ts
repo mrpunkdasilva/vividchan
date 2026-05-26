@@ -16,13 +16,16 @@ export function useCloudinary() {
       .quality('auto');
   };
 
-  const uploadImage = async (file: File) => {
+  const uploadImage = async (file: File | Blob, originalName?: string) => {
     if (!uploadPreset) {
       throw new Error('Upload preset is missing. Please check your .env.local file.');
     }
 
     const formData = new FormData();
     formData.append('file', file);
+    if (originalName) {
+      formData.append('public_id', originalName.split('.')[0] + '_' + Date.now());
+    }
     formData.append('upload_preset', uploadPreset);
     formData.append('tags', 'vividchan_gallery');
 
