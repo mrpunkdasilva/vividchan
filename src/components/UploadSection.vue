@@ -116,8 +116,8 @@ const triggerFileInput = () => {
           Error: {{ uploadError }}
         </div>
 
-        <div class="text-xs text-gray-500 uppercase tracking-widest">
-          Recommended: 1920x1080 or larger
+        <div class="text-xs text-gray-500 uppercase tracking-widest font-mono">
+          Max_File_Size: 10MB // JPG, PNG, WEBP, GIF
         </div>
       </div>
     </div>
