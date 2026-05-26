@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import * as THREE from 'three';
 
 const container = ref<HTMLElement | null>(null);
 let scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, points: THREE.Points;
+
+// Efeito 4: Parallax no Mouse
+const mouseX = ref(0);
+const mouseY = ref(0);
+
+const handleMouseMove = (event: MouseEvent) => {
+  mouseX.value = (event.clientX - window.innerWidth / 2) / 100;
+  mouseY.value = (event.clientY - window.innerHeight / 2) / 100;
+};
 
 onMounted(() => {
   if (!container.value) return;
@@ -17,7 +26,6 @@ onMounted(() => {
   renderer.setPixelRatio(window.devicePixelRatio);
   container.value.appendChild(renderer.domElement);
 
-  // Criar Geometria de Partículas
   const particlesGeometry = new THREE.BufferGeometry();
   const count = 2000;
   const positions = new Float32Array(count * 3);
@@ -40,7 +48,6 @@ onMounted(() => {
   particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-  // Material Neon Pink / Cyan
   const particlesMaterial = new THREE.PointsMaterial({
     size: 0.04,
     vertexColors: true,
@@ -54,8 +61,14 @@ onMounted(() => {
 
   const animate = () => {
     requestAnimationFrame(animate);
+    
+    // Suavizar o movimento de parallax
+    points.rotation.y += (mouseX.value * 0.05 - points.rotation.y) * 0.05;
+    points.rotation.x += (mouseY.value * 0.05 - points.rotation.x) * 0.05;
+    
+    // Rotação contínua base
     points.rotation.y += 0.0005;
-    points.rotation.x += 0.0002;
+    
     renderer.render(scene, camera);
   };
 
@@ -68,9 +81,11 @@ onMounted(() => {
   };
 
   window.addEventListener('resize', handleResize);
+  window.addEventListener('mousemove', handleMouseMove);
   
   onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
+    window.removeEventListener('mousemove', handleMouseMove);
     renderer.dispose();
   });
 });
