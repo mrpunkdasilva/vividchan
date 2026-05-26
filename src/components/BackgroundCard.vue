@@ -152,7 +152,7 @@ const getSpanClass = () => {
         </button>
         <button 
           @click="downloadImage"
-          class="px-4 md:px-6 py-2 text-[10px] md:text-[11px] uppercase font-black border-2 border-neon-cyan text-white hover:bg-white hover:text-black hover:shadow-[0_0_20px_#FFF] transition-all cursor-pointer bg-black/40"
+          class="px-4 md:px-6 py-2 text-[10px] md:text-[11px] uppercase font-black border-2 border-neon-cyan text-white hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_20px_#00F0FF] transition-all cursor-pointer bg-black/40"
         >
           Get
         </button>

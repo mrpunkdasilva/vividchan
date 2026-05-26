@@ -70,28 +70,31 @@ const downloadResized = async () => {
         </div>
 
         <!-- Resizer Tool Overlay -->
-        <div class="absolute top-20 right-8 w-64 bg-black/80 backdrop-blur-xl border border-neon-cyan p-4 space-y-4 pointer-events-auto">
-          <div class="text-neon-cyan text-[10px] uppercase tracking-widest font-mono mb-2">Resizer_Module</div>
-          <div class="space-y-2">
+        <div class="absolute top-20 right-8 w-64 bg-black/90 backdrop-blur-xl border border-neon-cyan p-4 space-y-4 pointer-events-auto shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+          <div class="text-neon-cyan text-[10px] uppercase tracking-widest font-mono mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 bg-neon-cyan animate-pulse"></span>
+            Resizer_Module
+          </div>
+          <div class="space-y-3">
             <div class="flex justify-between items-center text-[10px] uppercase text-gray-400">
-              <span>Width</span>
-              <input v-model="customWidth" type="number" class="w-20 bg-gray-900 border border-gray-700 text-white p-1 text-center outline-none focus:border-neon-pink" />
+              <span class="font-mono">Width_PX</span>
+              <input v-model="customWidth" type="number" class="w-24 bg-gray-950 border border-gray-800 text-neon-cyan p-1 text-center outline-none focus:border-neon-pink transition-colors font-mono" />
             </div>
             <div class="flex justify-between items-center text-[10px] uppercase text-gray-400">
-              <span>Height</span>
-              <input v-model="customHeight" type="number" class="w-20 bg-gray-900 border border-gray-700 text-white p-1 text-center outline-none focus:border-neon-pink" />
+              <span class="font-mono">Height_PX</span>
+              <input v-model="customHeight" type="number" class="w-24 bg-gray-950 border border-gray-800 text-neon-cyan p-1 text-center outline-none focus:border-neon-pink transition-colors font-mono" />
             </div>
           </div>
           <button 
             @click="downloadResized"
-            class="w-full py-2 bg-neon-cyan text-black font-black text-[10px] uppercase tracking-tighter hover:bg-white transition-all cursor-pointer"
+            class="w-full py-3 bg-neon-cyan text-black font-black text-[11px] uppercase tracking-tighter hover:bg-neon-pink hover:text-white hover:shadow-[0_0_20px_#FF007A] transition-all cursor-pointer border-none"
           >
             Download Custom Size
           </button>
           <div class="flex gap-2">
-            <button @click="customWidth = 1920; customHeight = 1080" class="flex-1 py-1 bg-gray-800 text-gray-400 text-[8px] uppercase hover:text-white">1080p</button>
-            <button @click="customWidth = 3840; customHeight = 2160" class="flex-1 py-1 bg-gray-800 text-gray-400 text-[8px] uppercase hover:text-white">4K</button>
-            <button @click="customWidth = 1080; customHeight = 1920" class="flex-1 py-1 bg-gray-800 text-gray-400 text-[8px] uppercase hover:text-white">Mobile</button>
+            <button @click="customWidth = 1920; customHeight = 1080" class="flex-1 py-2 bg-gray-900 border border-gray-800 text-gray-400 text-[11px] uppercase hover:text-neon-cyan hover:border-neon-cyan transition-all font-mono cursor-pointer">1080p</button>
+            <button @click="customWidth = 3840; customHeight = 2160" class="flex-1 py-2 bg-gray-900 border border-gray-800 text-gray-400 text-[11px] uppercase hover:text-neon-cyan hover:border-neon-cyan transition-all font-mono cursor-pointer">4K</button>
+            <button @click="customWidth = 1080; customHeight = 1920" class="flex-1 py-2 bg-gray-900 border border-gray-800 text-gray-400 text-[11px] uppercase hover:text-neon-cyan hover:border-neon-cyan transition-all font-mono cursor-pointer">Mobile</button>
           </div>
         </div>
 

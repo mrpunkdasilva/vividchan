@@ -1,15 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  --color-neon-pink: #FF007A;
+  --color-neon-cyan: #00F0FF;
+  --color-deep-space: #0D0D0D;
+}
+
 :root {
   --text: #9ca3af;
   --text-h: #f3f4f6;
-  --bg: #0D0D0D; /* Deep Space conforme a spec */
-  --accent-pink: #FF007A; /* Neon Pink conforme a spec */
-  --accent-cyan: #00F0FF; /* Electric Cyan conforme a spec */
+  --bg: #0D0D0D;
+  --accent-pink: #FF007A;
+  --accent-cyan: #00F0FF;
 }
 
 body {
-  @apply bg-[#0D0D0D] text-[#9ca3af] min-h-screen font-sans antialiased;
+  @apply bg-deep-space text-[#9ca3af] min-h-screen font-sans antialiased;
 }
 
 /* Estilização Customizada Anime Cybercore */
